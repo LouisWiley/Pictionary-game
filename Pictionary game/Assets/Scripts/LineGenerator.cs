@@ -14,10 +14,11 @@ public class LineGenerator : MonoBehaviour
    void Update()
     {
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        
-       if (Input.GetMouseButtonDown(0))
+        Collider2D target = Physics2D.OverlapPoint(mousePosition);
+
+        if (Input.GetMouseButtonDown(0))
         {
-            Collider2D target = Physics2D.OverlapPoint(mousePosition);
+           
 
             if (target)
             {
@@ -27,7 +28,7 @@ public class LineGenerator : MonoBehaviour
             }
            
         }
-        if (Input.GetMouseButtonUp(0) && canvas)
+        if (Input.GetMouseButtonUp(0) || !target)
         {
             activeLine = null;
         }
