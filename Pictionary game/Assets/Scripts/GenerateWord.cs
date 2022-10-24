@@ -9,33 +9,49 @@ public class GenerateWord : MonoBehaviour
     static private int min = 0;
     static private int max = wordBank.Length - 1; //returns 10 - 1 = 9
     static private int randomIndex;
-    static private string wordToGuess;
+    private string wordToGuess;
+ public static GenerateWord answer;
 
     void Start()
     {
+        string word;
+        
         Debug.Log("max: " + max);
         randomIndex = Random.Range(min, max);
 
         Debug.Log("The Word Is: " + wordBank[randomIndex]);
 
-        wordToGuess = wordBank[randomIndex];
-        Debug.Log(wordToGuess);
+        word = wordBank[randomIndex];
+        answer = new GenerateWord(word);
+        Debug.Log(answer.GetWord());
 
     }
 
     public bool IsCorrectGuess(string guess)
     {
-        if (guess == wordToGuess)
+        if (guess.ToLower() == wordToGuess.ToLower()) //compare the whole word to the answer so input like CAT CaT and caT are valid inputs but cats isn't.
         {
             return true;
         }
 
         return false;
     }
-    public string GetGuess()
+
+    private void SetWord(string s)
     {
-        return wordToGuess;
+        this.wordToGuess = s;
     }
+    public string GetWord()
+    {
+        Debug.Log(this.wordToGuess);
+        return this.wordToGuess;
+    }
+    public GenerateWord(string s)
+    {
+        this.SetWord(s);
+       // Debug.Log("The Answer is :" + this.GetWord());
+    }
+
 
 
     
