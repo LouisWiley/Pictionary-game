@@ -49,7 +49,7 @@ public class GenerateWord : MonoBehaviour
     public GenerateWord(string s)
     {
         this.SetWord(s);
-       // Debug.Log("The Answer is :" + this.GetWord());
+        Debug.Log("The Answer is :" + this.GetWord());
     }
 
 
