@@ -1,29 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ReadInput : MonoBehaviour
 {
   
     private string guessWord;
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public GameObject userFeedback;
+    public Sprite correctFeedback;
+    public Sprite wrongFeedback;
 
 
     public void ReadStringInput(string s)
     {
-        guessWord = s;
-        Debug.Log(guessWord);
+        
+       // text = GetComponent<UnityEngine.UI.Text>();
+        Debug.Log(s);
+       
         Debug.Log(GenerateWord.answer.GetWord());
         Debug.Log(GenerateWord.answer.IsCorrectGuess(s));
+
+        
+
+        if (GenerateWord.answer.IsCorrectGuess(s))
+        {
+            Debug.Log("Correct");
+            userFeedback.GetComponent<Image>().sprite = correctFeedback;
+            
+        }
+        else
+        {
+            Debug.Log("Wrong");
+            userFeedback.GetComponent<Image>().sprite = wrongFeedback;
+        }
     }
 }
