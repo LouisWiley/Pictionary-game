@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class GenerateWord : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -11,7 +11,7 @@ public class GenerateWord : MonoBehaviour
     static private int randomIndex;
     private string wordToGuess;
  public static GenerateWord answer;
-
+    public Text drawThis;
     void Start()
     {
         string word;
@@ -24,7 +24,7 @@ public class GenerateWord : MonoBehaviour
         word = wordBank[randomIndex];
         answer = new GenerateWord(word);
         Debug.Log(answer.GetWord());
-
+     //   drawThis.text = "Draw a: " + answer.GetWord();
     }
 
     public bool IsCorrectGuess(string guess)

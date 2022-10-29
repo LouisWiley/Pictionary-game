@@ -23,6 +23,7 @@ public class LineGenerator : MonoBehaviour
             if (target)
             {
                 GameObject newLine = Instantiate(linePrefab);
+                newLine.gameObject.tag = "Line";
                 activeLine = newLine.GetComponent<Line>();
 
             }
